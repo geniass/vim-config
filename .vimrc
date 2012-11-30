@@ -240,5 +240,6 @@ nmap <silent> <leader>n :NERDTreeToggle<CR>
 
 map <leader>t :!python % test<CR>
 
+map <leader>g :GundoToggle<CR>
 
 
