@@ -16,7 +16,6 @@ if has ("gui_running")
 endif
 
 
-colorscheme darkblue
 set visualbell
 
 set laststatus=2
@@ -31,6 +30,11 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 "let g:neocomplcache_enable_at_startup = 1
 
 
+" For fancy powerline symbols
+let g:Powerline_symbols = 'fancy'
+" Use a patched Ubuntu mono font
+set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+
 
 " FILETYPE
 " Get that filetype stuff happening
@@ -42,6 +46,13 @@ set autoindent
 
 " Turn on that syntax highlighting
 syntax on
+
+
+" THEME
+syntax enable
+set background=dark
+colorscheme solarized
+
 
 let g:pyflakes_use_quickfix = 0
 
@@ -119,6 +130,11 @@ set virtualedit=onemore
 
 set cursorline
 
+" Enable Mouse
+set mouse=a
+
+" You can use :w!! to save as root
+cmap w!! w !sudo tee % >/dev/null
 
 
 " SEARCH
@@ -214,6 +230,10 @@ imap <C-v> <ESC>"+pa
 
 "Save with ENTER in normal mode
 nmap <Enter> :w <Enter>
+
+
+" Allow pasting text without doing weird indentation
+set pastetoggle=<F3>
 
 
 
