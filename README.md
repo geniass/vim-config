@@ -19,3 +19,5 @@ For pathogen, Copy and paste:
     curl -Sso ~/.vim/autoload/pathogen.vim \
         https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
+
+* Patched font eg. https://github.com/pdf/ubuntu-mono-powerline-ttf/
