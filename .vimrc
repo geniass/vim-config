@@ -26,6 +26,7 @@ set statusline+=\ %P    "percent through file
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 "let g:neocomplcache_enable_at_startup = 1
 
