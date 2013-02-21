@@ -19,10 +19,10 @@ endif
 set visualbell
 
 set laststatus=2
-set statusline=%t       "tail of the filename
-set statusline+=%m      "modified flag
-set statusline+=%{fugitive#statusline()}
-set statusline+=\ %P    "percent through file
+"set statusline=%t       "tail of the filename
+"set statusline+=%m      "modified flag
+"set statusline+=%{fugitive#statusline()}
+"set statusline+=\ %P    "percent through file
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -102,8 +102,8 @@ set wildmode=list:longest
 
 " LEADER STUFF
 " instead of \
-let mapleader = ","
-let g:C_MapLeader  = ','
+let mapleader = "\<space>"
+let g:C_MapLeader  = '\<space>'
 
 " Let's make it easy to edit this file (mnemonic for the key sequence is
 " 'e'dit 'v'imrc)
@@ -262,5 +262,14 @@ nmap <silent> <leader>n :NERDTreeToggle<CR>
 map <leader>t :!python % test<CR>
 
 map <leader>g :GundoToggle<CR>
+
+map <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_map = '<Leader>p'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 
