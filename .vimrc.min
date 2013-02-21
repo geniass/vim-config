@@ -1,0 +1,39 @@
+" IMPORTANT STUFF
+" Forget being compatible with good ol' vi
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'mileszs/ack.vim'
+Bundle 'dag/vim2hs'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-surround'
+Bundle 'ervandew/supertab'
+Bundle 'msanders/snipmate'
+Bundle 'sontek/rope-vim'
+Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'fs111/pydoc'
+Bundle 'vim-scripts/pep8'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'ujihisa/neco-ghc'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'tpope/vim-git'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'xolox/vim-easytags'
+Bundle 'kien/ctrlp.vim'
+
