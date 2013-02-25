@@ -1,18 +1,53 @@
 " IMPORTANT STUFF
 " Forget being compatible with good ol' vi
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'mileszs/ack.vim'
+Bundle 'dag/vim2hs'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-surround'
+Bundle 'ervandew/supertab'
+Bundle 'msanders/snipmatei.vim'
+Bundle 'sontek/rope-vim'
+Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'fs111/pydoci.vim'
+Bundle 'vim-scripts/pep8'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'ujihisa/neco-ghc'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'tpope/vim-git'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'xolox/vim-easytags'
+Bundle 'kien/ctrlp.vim'
 
 
 " Pathogen
-filetype off " Pathogen needs to run before plugin indent on
-call pathogen#infect()
+"filetype off " Pathogen needs to run before plugin indent on
+"call pathogen#infect()
 "call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags() " generate helptags for everything in 'runtimepath'
-filetype off
+"filetype off
 
 
 if has ("gui_running")
-		set lines=999 columns=999
+    set lines=999 columns=999
 endif
 
 
@@ -172,40 +207,40 @@ command -bar Hexmode call ToggleHex()
 
 " helper function to toggle hex mode
 function ToggleHex()
-  " hex mode should be considered a read-only operation
-  " save values for modified and read-only for restoration later,
-  " and clear the read-only flag for now
-  let l:modified=&mod
-  let l:oldreadonly=&readonly
-  let &readonly=0
-  let l:oldmodifiable=&modifiable
-  let &modifiable=1
-  if !exists("b:editHex") || !b:editHex
-    " save old options
-    let b:oldft=&ft
-    let b:oldbin=&bin
-    " set new options
-    setlocal binary " make sure it overrides any textwidth, etc.
-    let &ft="xxd"
-    " set status
-    let b:editHex=1
-    " switch to hex editor
-    %!xxd
-  else
-    " restore old options
-    let &ft=b:oldft
-    if !b:oldbin
-      setlocal nobinary
+    " hex mode should be considered a read-only operation
+    " save values for modified and read-only for restoration later,
+    " and clear the read-only flag for now
+    let l:modified=&mod
+    let l:oldreadonly=&readonly
+    let &readonly=0
+    let l:oldmodifiable=&modifiable
+    let &modifiable=1
+    if !exists("b:editHex") || !b:editHex
+        " save old options
+        let b:oldft=&ft
+        let b:oldbin=&bin
+        " set new options
+        setlocal binary " make sure it overrides any textwidth, etc.
+        let &ft="xxd"
+        " set status
+        let b:editHex=1
+        " switch to hex editor
+        %!xxd
+    else
+        " restore old options
+        let &ft=b:oldft
+        if !b:oldbin
+            setlocal nobinary
+        endif
+        " set status
+        let b:editHex=0
+        " return to normal editing
+        %!xxd -r
     endif
-    " set status
-    let b:editHex=0
-    " return to normal editing
-    %!xxd -r
-  endif
-  " restore values for modified and read only state
-  let &mod=l:modified
-  let &readonly=l:oldreadonly
-  let &modifiable=l:oldmodifiable
+    " restore values for modified and read only state
+    let &mod=l:modified
+    let &readonly=l:oldreadonly
+    let &modifiable=l:oldmodifiable
 endfunction
 nnoremap <C-H> :Hexmode<CR>
 inoremap <C-H> <Esc>:Hexmode<CR>
