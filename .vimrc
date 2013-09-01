@@ -22,10 +22,10 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'ervandew/supertab'
-Bundle 'msanders/snipmatei.vim'
+Bundle 'msanders/snipmate.vim'
 Bundle 'sontek/rope-vim'
 Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'fs111/pydoci.vim'
+Bundle 'fs111/pydoc.vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
@@ -36,6 +36,9 @@ Bundle 'eagletmt/ghcmod-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'xolox/vim-easytags'
 Bundle 'kien/ctrlp.vim'
+Bundle 'wincent/Command-T'
+Bundle 'tpope/vim-haml'
+Bundle 'kchmck/vim-coffee-script'
 
 
 " Pathogen
@@ -105,6 +108,9 @@ set colorcolumn=85
 set softtabstop=4
 set shiftwidth=4
 
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+
 set foldmethod=indent
 set foldlevel=99
 set foldnestmax=2
@@ -137,8 +143,8 @@ set wildmode=list:longest
 
 " LEADER STUFF
 " instead of \
-let mapleader = "\<space>"
-let g:C_MapLeader  = '\<space>'
+let mapleader = "\,"
+let g:C_MapLeader  = '\,'
 
 " Let's make it easy to edit this file (mnemonic for the key sequence is
 " 'e'dit 'v'imrc)
@@ -171,6 +177,8 @@ set mouse=a
 
 " You can use :w!! to save as root
 cmap w!! w !sudo tee % >/dev/null
+
+set clipboard=unnamedplus
 
 
 " SEARCH
@@ -244,7 +252,7 @@ function ToggleHex()
 endfunction
 nnoremap <C-H> :Hexmode<CR>
 inoremap <C-H> <Esc>:Hexmode<CR>
-vnoremap <C-H> :<C-U>Hexmode<CR>
+"vnoremap <C-H> :<C-U>Hexmode<CR>
 
 
 
@@ -257,12 +265,30 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
+
 nmap <F2> :TagbarToggle<CR>
 
 vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
+
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 "Save with ENTER in normal mode
 nmap <Enter> :w <Enter>
@@ -294,8 +320,6 @@ nnoremap <leader>w <C-w>v<C-w>l
 
 nmap <silent> <leader>n :NERDTreeToggle<CR>
 
-map <leader>t :!python % test<CR>
-
 map <leader>g :GundoToggle<CR>
 
 map <leader>b :CtrlPBuffer<CR>
@@ -306,5 +330,7 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 'ra'
 
-
+set listchars=tab:>-,trail:○
+set list
