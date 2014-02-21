@@ -26,7 +26,6 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'sontek/rope-vim'
 Bundle 'mitechie/pyflakes-pathogen'
 Bundle 'fs111/pydoc.vim'
-Bundle 'vim-scripts/pep8'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'ujihisa/neco-ghc'
@@ -39,6 +38,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'xolox/vim-misc'
 
 
 " Pathogen
@@ -331,6 +331,8 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 'ra'
+
+noremap <leader>cc :call NERDComment(0, "toggle")<CR>
 
 set listchars=tab:>-,trail:○
 set list
