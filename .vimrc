@@ -6,32 +6,33 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
 "
 " original repos on github
 Bundle 'mileszs/ack.vim'
-Bundle 'dag/vim2hs'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
-Bundle 'ervandew/supertab'
+Bundle 'Raimondi/delimitMate'
+" Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'msanders/snipmate.vim'
-Bundle 'sontek/rope-vim'
-Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'fs111/pydoc.vim'
+"Bundle 'sontek/rope-vim'
+"Bundle 'mitechie/pyflakes-pathogen'
+"Bundle 'fs111/pydoc.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'ujihisa/neco-ghc'
-Bundle 'davidhalter/jedi-vim'
+"Bundle 'ujihisa/neco-ghc'
+"Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-git'
-Bundle 'eagletmt/ghcmod-vim'
+"Bundle 'eagletmt/ghcmod-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'xolox/vim-easytags'
 Bundle 'kien/ctrlp.vim'
@@ -66,13 +67,9 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-"let g:neocomplcache_enable_at_startup = 1
-
 
 " For fancy powerline symbols
-let g:Powerline_symbols = 'fancy'
-" Use a patched Ubuntu mono font
-set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+let g:airline_powerline_fonts = 1
 
 
 " FILETYPE
@@ -92,10 +89,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-
-let g:pyflakes_use_quickfix = 0
-
-let g:jedi#use_tabs_not_buffers = 0
 
 
 " THA NUMBAHS AND MISC
@@ -255,7 +248,6 @@ inoremap <C-H> <Esc>:Hexmode<CR>
 "vnoremap <C-H> :<C-U>Hexmode<CR>
 
 
-
 " KEY-MAPPING
 " jj goes to normal mode
 inoremap jj <ESC>
@@ -333,6 +325,8 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 'ra'
 
 noremap <leader>cc :call NERDComment(0, "toggle")<CR>
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 
 set listchars=tab:>-,trail:○
 set list
