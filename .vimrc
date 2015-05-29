@@ -3,11 +3,11 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " My Bundles here:
 "
@@ -15,7 +15,6 @@ Bundle 'gmarik/vundle'
 Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-Bundle 'Lokaltog/vim-distinguished'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
@@ -23,12 +22,15 @@ Bundle 'tpope/vim-surround'
 Bundle 'Raimondi/delimitMate'
 " Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'msanders/snipmate.vim'
+Plugin 'SirVer/ultisnips'
+Bundle "honza/vim-snippets"
+
 "Bundle 'sontek/rope-vim'
 "Bundle 'mitechie/pyflakes-pathogen'
 "Bundle 'fs111/pydoc.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'nathanaelkane/vim-indent-guides'
 "Bundle 'ujihisa/neco-ghc'
 "Bundle 'davidhalter/jedi-vim'
 Bundle 'tpope/vim-git'
@@ -36,11 +38,13 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'xolox/vim-easytags'
 Bundle 'kien/ctrlp.vim'
-Bundle 'wincent/Command-T'
+"Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'xolox/vim-misc'
+Bundle 'fatih/vim-go'
 
+call vundle#end()
 
 " Pathogen
 "filetype off " Pathogen needs to run before plugin indent on
@@ -67,9 +71,16 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+let g:easytags_by_filetype="~/.vimlangtags"
+let g:easytags_async=1
 
 " For fancy powerline symbols
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+let g:indent_guides_enable_on_vim_startup = 1
+
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 
 " FILETYPE
@@ -103,6 +114,20 @@ set shiftwidth=4
 
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+
+
+command -bar LinuxIndentation call ToggleLinuxIndentation()
+function ToggleLinuxIndentation()
+        if !exists("b:linux_indentation") || !b:linux_indentation
+            autocmd FileType c setlocal softtabstop=8 shiftwidth=8 noexpandtab
+            let b:linux_indentation=1
+        else
+            autocmd FileType c setlocal softtabstop=2 shiftwidth=2
+            set cindent
+            let b:linux_indentation=0
+        endif
+endfunction
+
 
 set foldmethod=indent
 set foldlevel=99
@@ -326,7 +351,7 @@ let g:ctrlp_working_path_mode = 'ra'
 
 noremap <leader>cc :call NERDComment(0, "toggle")<CR>
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 set listchars=tab:>-,trail:○
 set list
