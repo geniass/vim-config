@@ -10,14 +10,12 @@ Stuff that needs to be installed seperately:
 * git
 * jedi (from pip)
 * pep8 (pip)
-* pathogen (vim plugin)
-
-
-For pathogen, Copy and paste:
-
-    mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-    curl -Sso ~/.vim/autoload/pathogen.vim \
-        https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-
-
 * Patched font eg. https://github.com/pdf/ubuntu-mono-powerline-ttf/
+* [Vundle](https://github.com/gmarik/Vundle.vim)
+
+
+For Vundle (do this first):
+        `git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+
+
+
